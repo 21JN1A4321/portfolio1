@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #000428, #004e92);
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero h1, .hero h2 {
+      font-size: 3rem;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background: #00d8ff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .resume-btn:hover {
+      background: #00b0cc;
+    }
+
+    .profile-pic {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 5px solid #00d8ff;
+      flex-shrink: 0;
+      object-fit: cover;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #00d8ff; }
+      to { box-shadow: 0 0 20px #00d8ff; }
+    }
+
+    /* About Section */
+    #about {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00d8ff;
+    }
+
+    #about p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    #about ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #about li {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    /* Skills Section */
+    #skills {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #skills h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00d8ff;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .skills-container img {
+      width: 150px;
+      height: auto;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      background-color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .skills-container img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Projects Section */
+    #projects {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #projects h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00d8ff;
+    }
+
+    .project-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .project h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #00d8ff;
+    }
+
+    .project p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .project a {
+      color: #00d8ff;
+      text-decoration: none;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00d8ff;
+    }
+
+    .contact-form {
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-form form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      row-gap: 40px;
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+    }
+
+    .contact-form label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #000;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #666;
+    }
+
+    /* Full width for textarea and button */
+    .contact-form .full-width {
+      grid-column: 1 / span 2;
+    }
+
+    .contact-form button {
+      grid-column: 1 / span 2;
+      padding: 15px;
+      font-size: 1.2rem;
+      color: white;
+      background: #00d8ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #00b0cc;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      margin-top: 50px;
+    }
+
+    #role {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00d8ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>My Portfolio</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi,</h1>
+      <h2>
+        <span>I'm Likhitha Madala</span><br />
+        <span id="role">Frontend Developer</span>
+      </h2>
+      <div class="social-icons">
+        <a> <href="https://www.instagram.com/likhitha831/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a> <href="https://www.linkedin.com/in/likhitha-madala-131795268" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a> <href="https://github.com/21JN1A4321" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+      <a>
+        <href="https://drive.google.com/file/d/1oQqBd2dufqXsypUr27nTePsE0siHcaFw/view?usp=sharing"
+        class="resume-btn"
+        target="_blank"
+      
+        My Resume
+      </a>
+    </div>
+    <!-- Replace with the actual path to your image -->
+    <img src="C:\Users\likhi\Downloads\Profile.jpg" alt="Profile Picture" class="profile-pic" />
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, my name is Likhitha Madala and I am from Andhra Pradesh, India.
+    </p>
+    <p>
+      I graduated in the field of Artificial Intelligence from KIETW, Kakinda. I’m open to new collaborations or opportunities where I can contribute and grow. Feel free to connect with me—the links are in the footer.
+    </p>
+    <p><strong>Other than Academics:</strong></p>
+    <ul>
+      <li>👉 I joined the KIET Group, which has significantly enhanced my leadership and management skills.</li>
+      <li>👉 I currently serve as an NSS coordinator at KIET—a role that has been an exciting journey, allowing me to showcase my abilities.</li>
+    </ul>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <!-- Replace the src attributes with your actual image paths or URLs -->
+      <img src="C:\Users\likhi\Downloads\java.jpg" alt="Java" />
+      <img src="C:\Users\likhi\Downloads\js.png" alt="JavaScript" />
+      <img src="C:\Users\likhi\Downloads\css.png" alt="CSS" />
+      <img src="C:\Users\likhi\Downloads\html.png" alt="HTML" />
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-container">
+      <div class="project">
+        <h3>Real-time Hand Gesture Recognition</h3>
+        <p>
+          I developed a system that uses computer vision and machine learning to recognize hand gestures corresponding to the numbers 0 through 4. This technology processes live video feeds and applies advanced image processing techniques to isolate the hand from the background, ensuring that even subtle gestures are detected. By accurately interpreting the shape and movement of the hand, the system translates these visual inputs into their respective numerical values. This approach not only achieves high accuracy in recognizing the gestures but also demonstrates the potential for creating responsive, gesture-based interfaces in various applications.
+        </p>
+        <p>
+          
+          <a><href="https://github.com/21JN1A4321/Gesture-Recognition" target="_blank">
+           Click Here
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-form">
+      <form action="#" method="post">
+        <!-- Full Name -->
+        <div>
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+        </div>
+        <!-- Email Address -->
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <!-- Mobile Number -->
+        <div>
+          <label for="mobile">Mobile Number</label>
+          <input type="tel" id="mobile" name="mobile" placeholder="Enter your phone number" required />
+        </div>
+        <!-- Email Subject -->
+        <div>
+          <label for="subject">Email Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject of your email" required />
+        </div>
+        <!-- Message -->
+        <div class="full-width">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
+        </div>
+        <!-- Send Button -->
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
